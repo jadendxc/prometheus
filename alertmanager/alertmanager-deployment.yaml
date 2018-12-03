@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: alertmanager
-        image: prom/alertmanager:latest
+        image: docker-registry.default.svc:5000/monitor/alertmanager:latest
         command:
         - "/bin/alertmanager"
         args:
