@@ -9,8 +9,7 @@ data:
       resolve_timeout: 5m
       smtp_smarthost: smtp.qq.com:465
       smtp_from: 3358765053@qq.com
-      smtp_auth_username: jaden-test
-      smtp_auth_identity: 3358765053@qq.com
+      smtp_auth_username: 3358765053@qq.com
       smtp_auth_password: d5885808
     route:
       group_by: ['nodealert']
