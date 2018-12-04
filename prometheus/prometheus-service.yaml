@@ -13,4 +13,4 @@ spec:
     targetPort: 9090
   selector:
     app: prometheus
-  type: ClusterPort
+  type: ClusterIP

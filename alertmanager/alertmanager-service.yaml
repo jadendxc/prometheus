@@ -13,4 +13,4 @@ spec:
     targetPort: 9093
   selector:
     app: alertmanager
-  type: ClusterPort
+  type: ClusterIP
