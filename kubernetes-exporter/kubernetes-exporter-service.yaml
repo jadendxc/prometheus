@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: 'true'
+  labels:
+    app: kubernetes-exporter
+    name: kubernetes-exporter
+  namespace: jaden-test
+spec:
+  ports:
+  - name: kubernetes-exporter
+    protocol: TCP
+    port: 9174
+    targetPort: 9174
+  selector:
+    app: kubernetes-exporter

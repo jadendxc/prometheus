@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kubernetes-exporter
+  labels:
+    name: kubernetes-exporter
+  namespace: jaden-test
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kubernetes-exporter
+    spec:
+      serviceAccountName: prometheus
+      serviceAccount: prometheus
+      containers:
+      - name: kubernetes-exporter
+        image: docker-registry.default.svc:5000/jaden-test/kubernetes-exporter:latest
+        ports:
+        - containerPort: 9174
+          protocol: TCP
