@@ -13,5 +13,6 @@ spec:
     protocol: TCP
     port: 9174
     targetPort: 9174
+  type: ClusterIP
   selector:
     app: kubernetes-exporter
