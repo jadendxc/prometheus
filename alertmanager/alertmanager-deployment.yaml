@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: alertmanager
-        image: docker-registry.default.svc:5000/monitor/alertmanager:latest
+        image: docker-registry.default.svc:5000/jaden-test/alertmanager:latest
         command:
         - "/bin/alertmanager"
         args:
