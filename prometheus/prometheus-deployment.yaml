@@ -4,7 +4,7 @@ metadata:
   labels:
     name: prometheus
   name: prometheus
-  namespace: monitor
+  namespace: jaden-test
 spec:
   replicas: 1
   template:
@@ -12,9 +12,12 @@ spec:
       labels:
         app: prometheus
     spec:
+      serviceAccountName: prometheus
+      serviceAccount: prometheus
+    spec:
       containers:
       - name: prometheus
-        image: prom/prometheus:v2.2.1
+        image: docker-registry.default.svc:5000/monitor/prometheus:latest
         command:
         - "/bin/prometheus"
         args:
@@ -24,8 +27,13 @@ spec:
           protocol: TCP
         volumeMounts:
         - mountPath: "/etc/prometheus"
+          name: prometheus-rule-config
+        - mountPath: "/etc/prometheus"
           name: prometheus-config
       volumes:
+      - name: prometheus-rule-config
+        configMap:
+          name: prometheus-rule
       - name: prometheus-config
         configMap:
           name: prometheus
