@@ -10,7 +10,7 @@ data:
       evaluation_interval: 15s
     #告警规则
     rule_files:
-      - /etc/prometheus/prometheus.rules
+      - /etc/prometheus/rule/prometheus.rules
     #alertmanager配置
     alerting:
       alertmanagers:

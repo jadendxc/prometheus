@@ -26,7 +26,7 @@ spec:
         - containerPort: 9090
           protocol: TCP
         volumeMounts:
-        - mountPath: "/etc/prometheus"
+        - mountPath: "/etc/prometheus/rule"
           name: prometheus-rule-config
         - mountPath: "/etc/prometheus"
           name: prometheus-config
