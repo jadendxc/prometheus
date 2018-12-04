@@ -5,7 +5,7 @@ metadata:
 roleRef:
   apiGroup: v1
   kind: ClusterRole
-  name: cluster-reader
+  name: prometheus
 subjects:
 - kind: ServiceAccount
   name: prometheus
