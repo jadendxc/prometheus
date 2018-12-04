@@ -28,4 +28,4 @@ spec:
       volumes:
       - name: alertmanager-config
         configMap:
-          name: alertmanager-config
+          name: alertmanager
