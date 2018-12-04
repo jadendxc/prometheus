@@ -28,7 +28,7 @@ data:
     - job_name: 'kubernetes-exporter-nodes'
       scheme: http
       static_configs: 
-      - targets: ['172.28.90.77:9174']
+      - targets: ['172.28.90.77:31699']
     - job_name: 'kubernetes-nodes'
       scheme: https
       tls_config:
