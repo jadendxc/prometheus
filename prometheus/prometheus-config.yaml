@@ -125,5 +125,7 @@ data:
     #alertmanager配置
     alerting:
       alertmanagers:
+      - scheme: http
         - static_configs:
-            targets: ["alertmanager:9093"]
+            -targets: 
+             - "alertmanager:9093"
