@@ -6,16 +6,16 @@ metadata:
 data:
   prometheus.yml: |
     global:
-      scrape_interval:     15s 
+      scrape_interval:     15s
       evaluation_interval: 15s
     #告警规则
     rule_files:
       - /etc/prometheus/rule/prometheus.rules
     #alertmanager配置
-    alerting:
-      alertmanagers:
-        - static_configs:
-            targets: ['alertmanager:9093']
+    #alerting:
+    #  alertmanagers:
+    #    - static_configs:
+    #        targets: ['alertmanager:9093']
     #监控项配置
     scrape_configs:
       - job_name: 'kubernetes-nodes'
