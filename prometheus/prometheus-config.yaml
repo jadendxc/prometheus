@@ -28,7 +28,7 @@ data:
     - job_name: 'kubernetes-exporter-nodes'
       scheme: http
       static_configs: 
-      - targets: ['prometheus-exporter:9174']
+      - targets: ['kubernets-exporter:9174']
     - job_name: 'kubernetes-nodes'
       scheme: https
       tls_config:

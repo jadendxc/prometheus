@@ -5,7 +5,7 @@ metadata:
     prometheus.io/scrape: 'true'
   labels:
     app: kubernetes-exporter
-    name: kubernetes-exporter
+  name: kubernetes-exporter
   namespace: jaden-test
 spec:
   ports:
