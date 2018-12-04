@@ -123,7 +123,7 @@ data:
         action: replace
         target_label: kubernetes_name
     #alertmanager配置
-    #alerting:
-    #  alertmanagers:
-    #    - static_configs:
-    #        targets: ["alertmanager:9093"]
+    alerting:
+      alertmanagers:
+        - static_configs:
+            targets: ["alertmanager:9093"]
