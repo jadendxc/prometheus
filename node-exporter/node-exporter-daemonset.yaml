@@ -12,6 +12,7 @@ spec:
         prometheus.io/path: 'metrics'
       labels:
         app: node-exporter
+        node_exporter: true
       name: node-exporter
     spec:
       containers:

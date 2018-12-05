@@ -14,7 +14,7 @@ data:
       smtp_auth_password: 'inwibsjaqulocjea'
       smtp_require_tls: false
     route:
-      group_by: ['nodealert']
+      group_by: ['node_exporter']
       group_wait: 10s #分组持续时间，时间越长，获取的数据越多
       group_interval: 10s #分组间隔时间，时间越长，通知间隔越长
       repeat_interval: 1h

@@ -27,15 +27,7 @@ data:
       rules:
       - alert: node_memory_MemAvailable_bytes_lower
         expr: container_memory_usage_bytes < 3221225472
-        for: 5s
-        labels:
-          severity: page
-        annotations:
-          summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} available memory lower"
-          description: "{{ $labels.__meat_kubernetes_pod_node_name }} memory usage below 3GB (current value: {{ $value }})"
-      - alert: node_memory_MemAvailable_bytes_lower
-        expr: container_memory_usage_bytes < 3221225472
-        for: 5s
+        for: 5m
         labels:
           severity: page
         annotations:
