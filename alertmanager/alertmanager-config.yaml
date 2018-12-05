@@ -10,7 +10,7 @@ data:
       smtp_smarthost: 'smtp.qq.com:465'
       smtp_from: '3358765053@qq.com'
       smtp_auth_username: '3358765053@qq.com'
-      smtp_auth_password: 'd5885808'
+      smtp_auth_password: 'inwibsjaqulocjea'
       smtp_require_tls: false
     route:
       group_by: ['nodealert']
