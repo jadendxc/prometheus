@@ -10,7 +10,7 @@ data:
       rules:
       - alert: container_memory_usage_bytes
         expr: container_memory_usage_bytes>1048576
-        for: 1m
+        for: 5m
         labels:
           severity: page
         annotations:
