@@ -32,7 +32,7 @@ data:
           severity: page
         annotations:
           summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} available memory lower"
-          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} memory usage below 3GB (current value: {{ $value/1073741824 }})"
+          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} memory usage below 3GB (current value: {{ $value }})"
       - alert: node_cpu_load_high
         expr: node_load1 > 1
         for: 5m
@@ -72,6 +72,6 @@ data:
           severity: page
         annotations:
           summary: "container {{ $labels.__meat_kubernetes_pod_node_name }} memory usage high"
-          description: "container {{ $labels.__meat_kubernetes_pod_node_name }} memory usage above 3GB (current value: {{ $value }})"
+          description: "container {{ $labels.__meat_kubernetes_pod_node_name }} memory usage above 3GB (current value: {{ $value/1073741824 }})"
 
 
