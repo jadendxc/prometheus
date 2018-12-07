@@ -25,14 +25,14 @@ data:
         expr: sum(instance_mode:node_cpu_seconds:rate5m{mode!="idle"}) without (mode) / instance:node_cpus:count
     - name: nodealert
       rules:
-      - alert: node_memory_MemAvailable_bytes_lower
-        expr: node_memory_MemFree/1073741824 < 3
+      - alert: node_free_memory_lower
+        expr: node_memory_MemFree_bytes/1073741824 < 1
         for: 5m
         labels:
           severity: page
         annotations:
-          summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} available memory lower"
-          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} memory usage below 3GB (current value: {{ $value }} GB)"
+          summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} free memory lower"
+          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} memory free below 1GB (current value: {{ $value }} GB)"
       - alert: node_cpu_load_high
         expr: node_load1 > 1
         for: 5m
