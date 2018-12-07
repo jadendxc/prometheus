@@ -47,3 +47,6 @@ openshift
   oc apply -f alertmanager-pvc.yaml  
   oc apply -f alertmanager-deployment.yaml  
 ```
+
+## api
+https://prometheus.io/docs/prometheus/latest/querying/api/#alerts
