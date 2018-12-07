@@ -26,13 +26,13 @@ data:
     - name: nodealert
       rules:
       - alert: node_memory_MemAvailable_bytes_lower
-        expr: node_memory_MemFree < 3221225472
+        expr: node_memory_MemFree/1073741824 < 3
         for: 5m
         labels:
           severity: page
         annotations:
           summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} available memory lower"
-          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} memory usage below 3GB (current value: {{ $value }})"
+          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} memory usage below 3GB (current value: {{ $value }} GB)"
       - alert: node_cpu_load_high
         expr: node_load1 > 1
         for: 5m
@@ -42,36 +42,36 @@ data:
           summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} cpu load high"
           description: "node {{ $labels.__meat_kubernetes_pod_node_name }} cpu usage above 1 (current value: {{ $value }})"
       - alert: node_network_receive_speed_high
-        expr: delta(node_network_receive_bytes_total{device="eth0"}[2s])/2 > 900000000
+        expr: delta(node_network_receive_bytes_total{device="eth0"}[2s])/2097152 > 800
         for: 5m
         labels:
           severity: page
         annotations:
           summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} network receive speed high"
-          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network receive speed above 800M (current value: {{ $value }})"
+          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network receive speed above 800M (current value: {{ $value }} M/s)"
       - alert: node_network_transmit_speed_high
-        expr: delta(node_network_transmit_bytes_total{device="eth0"}[2s])/2 > 900000000
+        expr: delta(node_network_transmit_bytes_total{device="eth0"}[2s])/2097152 > 800
         for: 5m
         labels:
           severity: page
         annotations:
           summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed high"
-          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed above 800M (current value: {{ $value }})"
+          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed above 800M (current value: {{ $value }} M/s)"
       # - alert: node_network_transmit_speed_high
-      #   expr: delta(node_network_transmit_bytes_total{device="eth0"}[2s])/2 > 900000000
+      #   expr: delta(node_network_transmit_bytes_total{device="eth0"}[2s])/2097152 > 800
       #   for: 5m
       #   labels:
       #     severity: page
       #   annotations:
       #     summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed high"
-      #     description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed above 800M (current value: {{ $value }})"
+      #     description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed above 800M/s (current value: {{ $value }} M/s)"
       - alert: container_memory_usage_bytes_high
-        expr: container_memory_usage_bytes > 3221225472
+        expr: container_memory_usage_bytes/1073741824 > 3
         for: 5m
         labels:
           severity: page
         annotations:
           summary: "container {{ $labels.__meat_kubernetes_pod_node_name }} memory usage high"
-          description: "container {{ $labels.__meat_kubernetes_pod_node_name }} memory usage above 3GB (current value: {{ $value/1073741824 }})"
+          description: "container {{ $labels.__meat_kubernetes_pod_node_name }} memory usage above 3GB (current value: {{ $value }} GB)"
 
 
