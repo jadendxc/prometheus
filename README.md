@@ -1,23 +1,23 @@
-#基于Prometheus+alertmanager的kubernetes监控方案
+# 基于Prometheus+alertmanager的kubernetes监控方案
 
-##部署环境
+## 部署环境
 
 openshift
 
-##组件
+## 组件
 
 * prometheus
 * alertmanager
 * node exporter
 
-##预操作
+## 预操作
 
 * 修改yaml文件中namespace为实际部署project
 * 角色授权  
 `oc adm policy add-scc-to-user privileged -njaden-test -z default`
 * 修改pv中的挂载配置与pv&pvc中的存储配置
 
-##部署
+## 部署
 
 ### node exporter
 `oc project $NAMESPCE`  
