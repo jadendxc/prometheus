@@ -39,6 +39,7 @@ openshift
 
 ### alertmanager
 
+配置alertmanager-config中的邮件收发人
 ```
   oc apply -f alertmanager-service.yaml  
   oc apply -f alertmanager-config.yaml  
