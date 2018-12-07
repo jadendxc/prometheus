@@ -18,7 +18,7 @@ data:
       group_wait: 10s #分组持续时间，时间越长，获取的数据越多
       group_interval: 10s #分组间隔时间，时间越长，通知间隔越长
       repeat_interval: 1h
-      #receiver: 'default-receiver'
+      receiver: 'non-receiver'
       routes:
       - match:
           node_exporter: true
@@ -28,7 +28,7 @@ data:
       - match_re:
           namespace: .+
         receiver: default-receiver
-        
+
       #匹配namespace为空的容器
       - match:
           namespace: 
@@ -37,6 +37,10 @@ data:
       - name: default-receiver
         email_configs:
           - to: xchduan@qingyuanos.com
+            send_resolved: true
+      - name: non-receiver
+        email_configs:
+          - to: 294339772@qq.com
             send_resolved: true
      # inhibit_rules:
      #   - source_match:
