@@ -42,29 +42,29 @@ data:
           summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} cpu load high"
           description: "node {{ $labels.__meat_kubernetes_pod_node_name }} cpu usage above 1 (current value: {{ $value }})"
       - alert: node_network_receive_speed_high
-        expr: delta(node_network_receive_bytes_total{device="eth0"}[2s])/2097152 > 800
+        expr: delta(node_network_receive_bytes_total{device="eth0"}[4s])/2097152 > 10
         for: 5m
         labels:
           severity: page
         annotations:
           summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} network receive speed high"
-          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network receive speed above 800M (current value: {{ $value }} M/s)"
+          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network receive speed above 10M (current value: {{ $value }} M/s)"
       - alert: node_network_transmit_speed_high
-        expr: delta(node_network_transmit_bytes_total{device="eth0"}[2s])/2097152 > 800
+        expr: delta(node_network_transmit_bytes_total{device="eth0"}[4s])/2097152 > 10
         for: 5m
         labels:
           severity: page
         annotations:
           summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed high"
-          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed above 800M (current value: {{ $value }} M/s)"
+          description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed above 10M (current value: {{ $value }} M/s)"
       # - alert: node_network_transmit_speed_high
-      #   expr: delta(node_network_transmit_bytes_total{device="eth0"}[2s])/2097152 > 800
+      #   expr: delta(node_network_transmit_bytes_total{device="eth0"}[4s])/2097152 > 10
       #   for: 5m
       #   labels:
       #     severity: page
       #   annotations:
       #     summary: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed high"
-      #     description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed above 800M/s (current value: {{ $value }} M/s)"
+      #     description: "node {{ $labels.__meat_kubernetes_pod_node_name }} network transmit speed above 10M/s (current value: {{ $value }} M/s)"
       - alert: container_memory_usage_bytes_high
         expr: container_memory_usage_bytes/1073741824 > 3
         for: 5m
