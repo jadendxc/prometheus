@@ -23,11 +23,12 @@ data:
       - match:
           node_exporter: true
         receiver: default-receiver
-      routes:
+
       #正则匹配namespace不为空的容器
       - match_re:
           namespace: .+
         receiver: default-receiver
+        
       #匹配namespace为空的容器
       - match:
           namespace: 
