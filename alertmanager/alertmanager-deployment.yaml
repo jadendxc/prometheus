@@ -19,13 +19,19 @@ spec:
         - "/bin/alertmanager"
         args:
         - "--config.file=/etc/alertmanager/alertmanager.yml"
+        - "--storage.path=/alertmanager"
         ports:
         - containerPort: 9093
           protocol: TCP
         volumeMounts:
         - mountPath: "/etc/alertmanager"
           name: alertmanager-config
+        - mountPath: "/alertmanager"
+          name: alertmanager
       volumes:
       - name: alertmanager-config
         configMap:
           name: alertmanager
+      - name: alertmanager
+        persistentVolumeClaim:
+          claimName: alertmanager
