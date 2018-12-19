@@ -232,6 +232,8 @@ objects:
 - apiVersion: apps/v1beta1
   kind: StatefulSet
   metadata:
+    annotations: 
+      pod.beta.kubernetes.io/subdomain: prometheus 
     labels:
       app: prometheus
     name: prometheus
@@ -246,7 +248,7 @@ objects:
     template:
       metadata:
         annotations: 
-          pod.beta.kubernetes.io/subdomain: prometheus 
+          pod.beta.kubernetes.io/subdomain: prometheus
         labels:
           app: prometheus
         name: prometheus
