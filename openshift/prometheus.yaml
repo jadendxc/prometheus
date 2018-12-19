@@ -245,12 +245,13 @@ objects:
         app: prometheus
     template:
       metadata:
+        annotations: 
+          pod.beta.kubernetes.io/subdomain: prometheus 
         labels:
           app: prometheus
         name: prometheus
       spec:
         serviceAccountName: prometheus
-        subdomain: prometheus
         containers:
         # Deploy Prometheus behind an oauth proxy
         - name: prom-proxy
