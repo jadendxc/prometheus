@@ -17,10 +17,10 @@ parameters:
   value: openshift/oauth-proxy:v1.0.0
 - description: The location of the prometheus image
   name: IMAGE_PROMETHEUS
-  value: openshift/prometheus:v2.2.1
+  value: openshift/prometheus:v2.3.2
 - description: The location of the alertmanager image
   name: IMAGE_ALERTMANAGER
-  value: openshift/prometheus-alertmanager:v0.14.0
+  value: openshift/prometheus-alertmanager:v0.15.1
 - description: The location of alert-buffer image
   name: IMAGE_ALERT_BUFFER
   value: openshift/prometheus-alert-buffer:v0.0.2
@@ -64,7 +64,7 @@ objects:
       kubernetes.io/service-account.name: prometheus-scraper
   type: kubernetes.io/service-account-token
 
-- apiVersion: v1
+- apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRole
   metadata:
     name: prometheus-scraper
@@ -232,8 +232,6 @@ objects:
 - apiVersion: apps/v1beta1
   kind: StatefulSet
   metadata:
-    annotations: 
-      pod.beta.kubernetes.io/subdomain: prometheus 
     labels:
       app: prometheus
     name: prometheus
@@ -247,8 +245,6 @@ objects:
         app: prometheus
     template:
       metadata:
-        annotations: 
-          pod.beta.kubernetes.io/subdomain: prometheus
         labels:
           app: prometheus
         name: prometheus
@@ -564,7 +560,7 @@ objects:
         metric_relabel_configs:
         - source_labels: [__name__]
           action: drop
-          regex: 'container_(cpu_user_seconds_total|cpu_cfs_periods_total|memory_usage_bytes|memory_swap|memory_working_set_bytes|memory_cache|last_seen|fs_(read_seconds_total|write_seconds_total|sector_(.*)|io_(.*)|reads_merged_total|writes_merged_total)|tasks_state|memory_failcnt|memory_failures_total|spec_memory_swap_limit_bytes|fs_(.*)_bytes_total|spec_(.*))'
+          regex: 'container_(cpu_user_seconds_total|cpu_cfs_periods_total|memory_usage_bytes|memory_swap|memory_cache|last_seen|fs_(read_seconds_total|write_seconds_total|sector_(.*)|io_(.*)|reads_merged_total|writes_merged_total)|tasks_state|memory_failcnt|memory_failures_total|spec_memory_swap_limit_bytes|fs_(.*)_bytes_total|spec_(.*))'
         relabel_configs:
         - action: labelmap
           regex: __meta_kubernetes_node_label_(.+)
