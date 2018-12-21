@@ -15,8 +15,11 @@ data:
       static_configs:
       - targets: ['localhost:9090']
     - job_name: 'openshift-router'
+      basic_auth: 
+        username: admin
+        password: ChJbnpQoZY
       static_configs:
-      - targets: ['admin:ChJbnpQoZY@172.28.90.77:1936']
+      - targets: ['172.28.90.77:1936']
     - job_name: 'kubernetes-apiservers'
       kubernetes_sd_configs:
       - role: endpoints
