@@ -50,3 +50,5 @@ openshift
 
 ## api
 https://prometheus.io/docs/prometheus/latest/querying/api/#alerts
+## prometheus kubernetes config
+https://github.com/prometheus/prometheus/blob/master/documentation/examples/prometheus-kubernetes.yml

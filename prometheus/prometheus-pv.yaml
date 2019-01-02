@@ -4,10 +4,10 @@ metadata:
   name: prometheus
 spec:
   capacity:
-    storage: 5Gi
+    storage: 20Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    path: /mnt/jaden-test/prometheus
-    server:  lb.qyos.novalocal
+    path: /mnt/monitor-prometheus
+    server: 172.16.36.13
